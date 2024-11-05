@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Votos Sobre Temas </title>
+    <script src="/script.js" defer></script>
+</head>
+<body>
+    <h1>Tabla de clasificación</h1>
+    <form action="/new" method="POST">
+        <input type="text" name="title" placeholder="Nuevo tema" required>
+        <button type="submit">Agregar Tema</button>
+    </form>
+    <ul id="topics-list">
+        <% topics.forEach(topic => { %>
+            <li>
+                <span id="title-<%= topic.id %>"><%= topic.title %></span> - Votos: <%= topic.votes %>
+                <button onclick="vote('<%= topic.id %>')">Votar</button>
+                <button onclick="deleteTopic('<%= topic.id %>')">Eliminar</button>
+                <button onclick="showEditForm('<%= topic.id %>')">Editar</button>
+            </li>
+        <% }) %>
+    </ul>
+
+    <!-- Formulario de edición oculto -->
+    <div id="edit-form" style="display: none;">
+        <h3>Editar Tema</h3>
+        <input type="text" id="edit-title" placeholder="Nuevo título">
+        <button onclick="updateTopic()">Guardar Cambios</button>
+        <button onclick="hideEditForm()">Cancelar</button>
+    </div>
+</body>
+</html>

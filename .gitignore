@@ -1,0 +1,6 @@
+# Node.js y entornos locales
+node_modules/
+.env
+
+# Configuración de VSCode
+.vscode/
