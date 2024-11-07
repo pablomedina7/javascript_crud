@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
 <title>Tabla de Posiciones</title>
 <style>
     table {
@@ -43,7 +44,8 @@
         <th id="votos">Votos</th>
         <th id="acciones">Acciones</th>
     </tr>
-    <script>document.getElementById("nombre").style.color = "white";
+    <script>
+    document.getElementById("nombre").style.color = "white";
     document.getElementById("votos").style.color = "white";
     document.getElementById("acciones").style.color = "white";
     </script>
@@ -63,15 +65,17 @@
             <button class="edit-button" onclick="mostrarEditor(this)">Editar</button>
             
             <!-- Formulario de edición que aparece al hacer clic en "Editar" -->
-            <form action="/actualizar/<%= tema.id %>" method="POST" class="edit-form" style="display: inline;">
-            <input type="text" name="nuevoTitulo" placeholder="Nuevo Nombre" class="edit-input">
-            <button type="submit" class="save-button">Guardar</button>
+            <form action="/actualizar/<%= tema.id %>?_method=PUT" method="POST" class="edit-form" style="display: inline;">
+              <input type="text" name="nuevoTitulo" placeholder="Nuevo Nombre" class="edit-input">
+              <button type="submit" class="save-button">Guardar</button>
             </form>
             
+            
             <!-- Botón de eliminar -->
-            <form action="/eliminar/<%= tema.id %>" method="POST" style="display:inline;">
-            <button type="submit">Eliminar</button>
+            <form action="/eliminar/<%= tema.id %>?_method=DELETE" method="POST" style="display:inline;">
+              <button type="submit">Eliminar</button>
             </form>
+            
         </td>
         </tr>
     <% }) %>
